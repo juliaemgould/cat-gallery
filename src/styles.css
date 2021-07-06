@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico|Roboto");
+
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: #e4d5ee;
+  color: #4d0b3f;
+  padding: 0.5em 1.5em;
+}
+
+h1 {
+  font-family: Pacifico;
+  font-weight: normal;
+}
+
+select,
+.css-yk16xz-control {
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 3px;
+  border-color: none;
+  background-color: transparent;
+}
+
+button {
+  font-family: Pacifico;
+  background-color: #b99cb3;
+  border-radius: 5px;
+}
+
+button.disabled {
+  background-color: #b3aab1;
+  cursor: not-allowed;
+}
