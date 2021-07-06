@@ -1,22 +1,23 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, {useContext } from "react";
+import PageContext from "./page-Context";
 
 function Paginate(props) {
-  const [page, setPage] = useState(0);
+  const pageCtx = useContext(PageContext);
   //This section updates the page number whenever the Previous and Next buttons are clicked
 
   return (
     <div className="pages">
-      {page < 1 ? ( //Evalautes if it's the first page and swaps button to prevent action
+      {pageCtx.page < 1 ? ( //Evalautes if it's the first page and swaps button to prevent action
         <button id="prev" className="disabled" disabled>
           Previous
         </button>
       ) : (
-        <button id="prev" onClick={() => setPage(page - 1)}>
+        <button id="prev" onClick={() => pageCtx.setPage(pageCtx.page - 1)}>
           Previous
         </button>
       )}
-      <span>page {page + 1}</span>
-      <button id="next" onClick={() => setPage(page + 1)}>
+      <span>page {pageCtx.page + 1}</span>
+      <button id="next" onClick={() => pageCtx.setPage(pageCtx.page + 1)}>
         Next
       </button>
     </div>

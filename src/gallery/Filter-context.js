@@ -1,8 +1,9 @@
-/*This context helps filters the image based on image type
+/*This context helps filter the images based on image type
 It's needed to pass the properties from the image filter component 
 as it is not a direct parent*/
 
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+import FavContext from "./Fav-context";
 
 const FilterContext = createContext({
   images: [],
@@ -11,7 +12,8 @@ const FilterContext = createContext({
 });
 
 export function FilterContextProvider(props) {
-  //List of options for the select menu
+  //List of image options for the select menu
+  const favCtx = useContext(FavContext);
   var imageTypes = [
     {
       value: "jpg,png,gif",
@@ -31,7 +33,7 @@ export function FilterContextProvider(props) {
     },
     {
       value: "favorite",
-      label: "My favs ❤"
+      label: "My favs ❤ " + favCtx.totalFavs //Displays total favorites 
     }
   ];
 

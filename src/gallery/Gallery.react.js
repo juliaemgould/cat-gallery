@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import FilterContext from "./Filter-context";
 import ImageFilter from "./ImageFilter.react";
 import Paginate from "./Paginate.react";
 import "./gallery.css";
@@ -10,12 +11,19 @@ library.add(fab, faHeart);
 library.add(far, faHeart);
 
 function Gallery(props) {
+  const filterCtx = useContext(FilterContext);
+
   return (
     <div>
       <div className="main-container">
         <h1>La Galerie des Chats en Violet</h1>
         <ImageFilter />
-        <Paginate />
+        <div>
+        { //Remove pagination for favorites 
+        (filterCtx.selection !== "favorite")? <Paginate /> : ""}
+       
+        </div>
+
         <div className="gallery grid">{props.children}</div>
       </div>
     </div>

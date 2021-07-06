@@ -21,8 +21,7 @@ export async function fetchPictures({
 /**(async function () {
   const data = await fetchPictures();
   console.log(data);
-  console.log(data[3]);
-})();*/
+})(); */
 /**
  * Adds an image to the user's favorites by id.
  */
@@ -47,18 +46,44 @@ export async function addToFavorites({ imageId }) {
     imageId: "YwfiMNq9z"
   });
   console.log(data);
-})();*/
+})();**/
+
+//Added Function check for favorite
+/*export async function itemIsFavorite(favouriteId) {
+  const url = `https://api.thecatapi.com/v1/favourites?sub_id=jgould&favourite_id=${favouriteId}`;
+  return await fetch(url, { headers }).then((res) => res.json());
+}*/
+
+
+
+/*A*dded Function to delete favorites 
+Delete is getting a 405. I'm unsure how to resolve
+
+export async function deleteFavorites(favouriteId) {
+  const url = `https://api.thecatapi.com/v1/favourites?favourite_id=${favouriteId}`;
+  return await fetch(url, {method: "DELETE",headers: {
+    ...headers,
+    "Content-Type": "application/json"
+  }});
+}
+
+(async function () {
+  const data = await deleteFavorites(2093445);
+  console.log(data);
+})();
+
+**/
 
 /**
  * Returns a promise which resolves with an array of the user's
  * favorite images.
  */
-export async function getMyFavorites({ page = 0 } = {}) {
-  const url = `https://api.thecatapi.com/v1/favourites?limit=12&page=${page}&sub_id=${userId}`;
+export async function getMyFavorites({ page =0  } = {}) {
+  const url = `https://api.thecatapi.com/v1/favourites?&page=${page}&sub_id=${userId}&order=desc`;
   return await fetch(url, { headers }).then((res) => res.json());
 }
 
-/**(async function () {
+(async function () {
   const data = await getMyFavorites();
   console.log(data);
-})();*/
+})();
